@@ -157,19 +157,19 @@ public class AddressBook implements Serializable
 		}
 	}
 	
-	public void objImport(){
+	public BuddyInfo objImport(){
 		BuddyInfo bd = null;
 		try{
 			ObjectInputStream ois = new ObjectInputStream(new FileInputStream("objout.txt"));
 			bd = (BuddyInfo) ois.readObject();
-			System.out.println("Object: " + ois.readObject());
+			System.out.println("Object: " + bd);//ois.readObject());
 			
 			//System.out.println("" + ois.readObject());
 		}
 		catch(Exception ex){
 			ex.printStackTrace();
 		}
-		//return bd;
+		return bd;
 	}
 	
 	public static void main(String[] args) {

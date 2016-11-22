@@ -4,6 +4,7 @@ public class AddressBookTest extends TestCase {
 	private AddressBook adr = null;
 	private BuddyInfo bd = null;
 	private BuddyInfo bd2 = null;
+	private BuddyInfo bd3 = null;
 	
 	public void setUp(){
 		adr = new AddressBook();
@@ -52,6 +53,13 @@ public class AddressBookTest extends TestCase {
 		adr.export("output.txt");
 		bd2 = adr.importer("output.txt");
 		assertTrue(bd.equals(bd2));
+	}
+	
+	public void testObjExportImport(){
+		adr.addBuddy("Toyin", bd);
+		adr.objExport();
+		bd3 = adr.objImport();
+		assertTrue(bd.equals(bd3));
 	}
 	
 	public static void main(String[] args) {
