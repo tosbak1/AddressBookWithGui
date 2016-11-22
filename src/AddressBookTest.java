@@ -3,6 +3,7 @@ import junit.framework.TestCase;
 public class AddressBookTest extends TestCase {
 	private AddressBook adr = null;
 	private BuddyInfo bd = null;
+	private BuddyInfo bd2 = null;
 	
 	public void setUp(){
 		adr = new AddressBook();
@@ -46,6 +47,12 @@ public class AddressBookTest extends TestCase {
 		assertEquals(1, adr.getSize());
 	}
 	
+	public void testExportImport(){
+		adr.addBuddy("Toyin", bd);
+		adr.export("output.txt");
+		bd2 = adr.importer("output.txt");
+		assertTrue(bd.equals(bd2));
+	}
 	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub

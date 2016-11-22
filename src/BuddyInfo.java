@@ -1,4 +1,6 @@
-public class BuddyInfo 
+import java.io.Serializable;
+
+public class BuddyInfo implements Serializable 
 {
 	private String name,               // name of buddy
 	               address,            // address of buddy
@@ -91,5 +93,9 @@ public class BuddyInfo
 		String[] str1 = str.split("\\$");
 		BuddyInfo bd = new BuddyInfo(str1[0], str1[1], str1[2]);
 		return bd;
+	}
+	
+	public boolean equals(BuddyInfo bd){
+		return (this.name.equals(bd.name) && this.address.equals(bd.address) && this.phone_num.equals(bd.phone_num));
 	}
 }
