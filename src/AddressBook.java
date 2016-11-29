@@ -1,4 +1,5 @@
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -172,7 +173,36 @@ public class AddressBook implements Serializable
 		return bd;
 	}
 	
-	public static void main(String[] args) {
+	public void importDOMXML() throws Exception{
+		XMLParser p = new XMLParser();
+		File outputFile =  new File("outputXML.xml");
+		p.readDOM(outputFile);
+	}
+	
+	public void importSAXXML() throws Exception{
+		XMLParser p = new XMLParser();
+		File outputFile =  new File("outputXML.xml");
+		p.readSAX(outputFile);
+	}
+	
+	public void exportToXMLFile(){
+		PrintWriter out;
+		
+		try {
+			out = new PrintWriter("outputXML.xml");
+			for (BuddyInfo b : addressBook.values()) {
+				out.println(b.toXML());
+			}
+			out.close();
+		} catch (FileNotFoundException e1) {
+		// TODO Auto-generated catch block
+		e1.printStackTrace();
+		}
+			
+	}
+	
+	public static void main(String[] args) throws Exception {
+		/*
 		// TODO Auto-generated method stub
 		String str1 = "Toyin$judhdfhd$56551";
 		AddressBook ad = new AddressBook();
@@ -195,5 +225,15 @@ public class AddressBook implements Serializable
 		ad.objExport();
 		ad.objImport();
 		//System.out.println(ad.getSize());
+		*/
+		AddressBook ad = new AddressBook();
+
+		BuddyInfo xmlBud = new BuddyInfo("CoachTo", "Insta", "26");
+		ad.addBuddy("CoachTo", xmlBud);
+		System.out.println(xmlBud.toXML());
+		ad.exportToXMLFile();
+		
+		ad.importDOMXML();
+		ad.importSAXXML();
 	}
 }

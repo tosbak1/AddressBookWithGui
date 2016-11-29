@@ -98,4 +98,8 @@ public class BuddyInfo implements Serializable
 	public boolean equals(BuddyInfo bd){
 		return (this.name.equals(bd.name) && this.address.equals(bd.address) && this.phone_num.equals(bd.phone_num));
 	}
+	
+	public String toXML(){
+		return "<BuddyInfo>"+"\n\t<name> "+this.name+" </name>\n"+"\t<address> "+this.address+" </address>\n"+"\t<phoneNumber> "+this.phone_num+" </phoneNumber>\n"+"</BuddyInfo>\n";
+	}
 }
