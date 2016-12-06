@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<project name="Hello" default="print message">
+	
+	<target name="print message">
+		<echo message="Hello from Ant!"/>
+	</target>
+	
+	<target name="packaging">
+	        <mkdir dir="build/jar"/>
+	        <jar destfile="build/jar/AddressBookJAR.jar" basedir="bin">
+	            <manifest>
+	                <attribute name="Main-Class" value="AddressBook"/>
+	            </manifest>
+	        </jar>
+		<java jar = "build/jar/AddressBookJAR.jar" fork = "true"/>
+	 </target>
+	
+	<target name="packaging2">
+	        <mkdir dir="build/jar"/>
+	        <jar destfile="build/jar/GUIAddressBookJAR.jar" basedir="bin">
+	            <manifest>
+	                <attribute name="Main-Class" value="GUIAddressBook"/>
+	            </manifest>
+	        </jar>
+		<java jar = "build/jar/GUIAddressBookJAR.jar" fork = "true"/>
+	 </target>
+	
+</project>
